@@ -7,6 +7,18 @@ A serverless contact form backend solution deployed on Netlify, providing a simp
 
 **[View Live Application](https://contactusbackend.netlify.app/)**
 
+## 💻 Local Host
+- Before Run in Local Host (http://localhost:3000/)
+
+  **Replace The Code**
+ ```bash
+    <form method="GET" action="success.html" class="space-y-5">
+   ```
+ **TO**
+
+ ```bash
+   <form method="POST" action="/submit" class="space-y-5">
+   ```
 ## 📋 Overview
 
 This project provides a serverless backend solution for handling contact form submissions. Built with modern web technologies and deployed on Netlify, it offers a reliable, scalable, and cost-effective way to process contact forms without maintaining a traditional server infrastructure.
