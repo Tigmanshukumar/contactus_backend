@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/DzKktn6v/images-removebg-preview.png">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-neutral-800 flex flex-col caret-indigo-500 items-center justify-center min-h-screen">
+  <div class=" w-full max-w-lg bg-neutral-900 rounded-[22px] border-2 border-transparent shadow-lg p-8 transition-all duration-500 hover:scale-85 hover:rounded-[20px] hover:border-indigo-500 hover:shadow-[0_0_30px_1px_rgba(79,70,229,0.3)]">
+    <h1 class="text-4xl font-bold text-indigo-500 mb-6 text-center">Contact Us</h1>
+    <form method="POST" action="/submit" class="space-y-5">
+      <div>
+        <input type="text" name="name" required placeholder="Name"
+          class="w-full px-4 py-2 text-white border rounded-lg outline-none bg-transparent mt-2" />
+      </div>
+
+      <div>
+        <input type="email" name="email" required placeholder="Email"
+          class="w-full px-4 py-2 text-white border rounded-lg outline-none bg-transparent" />
+      </div>
+
+      <div>
+        <textarea name="message" rows="4" required placeholder="Message"
+          class="w-full px-4 py-2 text-white border rounded-lg resize-none outline-none bg-transparent"></textarea>
+      </div>
+
+      <button type="submit"
+        class="w-full bg-transparent font-bold border border-indigo-700 text-indigo-500 py-2 px-4 rounded-lg hover:bg-indigo-700 hover:text-white transition">
+        Send Message
+      </button>
+    </form>
+  </div>
+  <footer class="text-indigo-500 text-sm py-4 text-right">
+    © 2025 tigmanshu
+</footer>
+  
+</body>
+
+
+</html>
