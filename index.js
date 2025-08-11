@@ -1,0 +1,55 @@
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
+const bodyParser = require('body-parser');
+
+const app = express();
+
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
+
+const dataFile = path.join(__dirname, 'data.json');
+
+app.post('/submit', (req, res) => {
+    const { name, email, message } = req.body;
+    
+    const newEntry = { name, email, message, date: new Date().toISOString() };
+
+    let data = [];
+    if (fs.existsSync(dataFile)) {
+        data = JSON.parse(fs.readFileSync(dataFile));
+    }
+    data.push(newEntry);
+
+    fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
+
+    res.send(`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Success</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+<body class="bg-neutral-800 flex items-center justify-center min-h-screen text-white">
+  <div class="w-full text-center max-w-md  bg-neutral-900 rounded-[22px] border-2 border-transparent shadow-lg p-8 transition-all duration-500 hover:scale-85 hover:rounded-[20px] hover:border-indigo-500 hover:shadow-[0_0_30px_1px_rgba(79,70,229,0.3)]">
+    <div class="text-green-400 text-6xl mb-4">✅</div>
+    <h2 class="text-2xl font-bold mb-2">Form Submitted Successfully!</h2>
+    <p class="text-gray-400 mb-6">Thank you for reaching out. We’ll get back to you soon.</p>
+    <a href="/" 
+       class="inline-block bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">
+       Go Back
+    </a>
+  </div>
+</body>
+</html>
+`);
+});
+
+app.listen(3000);
